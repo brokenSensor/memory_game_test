@@ -7,10 +7,11 @@ export type GridState = {
 }
 
 export type CartType = {
-	value: number
+	icon: string
+	position: { row: number; col: number }
 }
 
 export type CardProps = {
-	value: number
 	visible: boolean
+	card: CartType
 }

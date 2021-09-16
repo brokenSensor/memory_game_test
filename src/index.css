@@ -1,14 +1,119 @@
+:root {
+	--card-icon-color: rgb(0, 110, 255);
+	--card-back-color: #8cd3ab;
+	--card-face-color: rgb(255, 255, 255);
+}
+
 #root {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	flex-direction: column;
+}
+
+.interface {
+	display: flex;
+	background: rgb(35, 130, 195);
+	background: linear-gradient(
+		0deg,
+		rgba(35, 130, 195, 1) 25%,
+		rgba(95, 168, 255, 1) 75%
+	);
+	padding: 1%;
+	border-radius: 1vw 1vw 0 0;
+	font-size: 1.5vw;
+	color: white;
+	width: 30%;
+
+	justify-content: center;
+	align-items: center;
+}
+
+.interface > div {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	padding: 0 5%;
+}
+
+.interface > div > span {
+	padding-top: 5%;
+}
+
+.start-screen {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	background-color: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(5px);
+	padding: 2vw;
+	border-radius: 1vw;
+}
+
+.start-screen > * {
+	margin: 1vw 0;
+}
+
+.input-text {
+	border-radius: 0.5vw;
+	padding: 0.5vw;
+	border-color: rgb(171, 172, 248);
+}
+
+.input-text:focus-visible {
+	outline: rgb(187, 188, 255) auto 1px;
+}
+
+.button {
+	border-radius: 1vw;
+	color: aliceblue;
+	background: rgb(0, 35, 59);
+	background: linear-gradient(
+		90deg,
+		rgba(0, 35, 59, 1) 25%,
+		rgba(0, 45, 99, 1) 75%
+	);
+}
+
+.start-button {
+	font-size: larger;
+}
+
+.leaderbord {
+	display: flex;
+	flex-direction: column;
+	padding: 1vw;
+	background-color: rgba(0, 0, 0, 0.15);
+}
+
+.leaderbord > * {
+	padding: 0.4vw;
+}
+
+.leaderbord div:nth-child(1) {
+	border-radius: 0.5vw;
+	background-color: gold;
+}
+.leaderbord div:nth-child(2) {
+	border-radius: 0.5vw;
+	background-color: silver;
+}
+.leaderbord div:nth-child(3) {
+	border-radius: 0.5vw;
+	background-color: #cd7f32;
 }
 
 .game-box {
-	height: 90vh;
-	width: 90vw;
-	background-color: rgb(162, 250, 159);
+	display: flex;
+	height: 70vh;
+	width: 70vw;
+	background: rgb(35, 130, 195);
+	background: linear-gradient(
+		180deg,
+		rgba(35, 130, 195, 1) 25%,
+		rgba(95, 168, 255, 1) 75%
+	);
+	border-radius: 1vw;
 }
 
 .container {
@@ -33,8 +138,117 @@
 }
 
 .card {
-	background-color: aquamarine;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--card-back-color);
+	border-radius: 1vw;
 	margin: 10%;
 	height: 80%;
 	width: 80%;
+}
+
+.card > i {
+	font-size: 5vw;
+	color: var(--card-icon-color);
+}
+
+.card-done > i {
+	color: rgb(0, 88, 34) !important;
+}
+
+.card-hide {
+	animation: hide 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both !important;
+}
+
+@keyframes hide {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.flip-card-bottom {
+	animation: flip-vertical-right 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+		both;
+}
+
+.flip-card-bottom > i {
+	animation: hideIcon 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
+@keyframes hideIcon {
+	0% {
+		color: var(--card-icon-color);
+	}
+	49% {
+		color: var(--card-icon-color);
+	}
+	50% {
+		color: rgba(0, 0, 0, 0);
+	}
+	100% {
+		color: rgba(0, 0, 0, 0);
+	}
+}
+
+@keyframes flip-vertical-right {
+	0% {
+		background-color: var(--card-face-color);
+		transform: rotateY(0);
+	}
+	49% {
+		background-color: var(--card-face-color);
+	}
+	50% {
+		background-color: var(--card-back-color);
+	}
+	100% {
+		background-color: var(--card-back-color);
+		transform: rotateY(180deg);
+	}
+}
+
+.flip-card-face {
+	animation: flip-vertical-left 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+		both;
+}
+
+.flip-card-face > i {
+	animation: showIcon 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
+@keyframes showIcon {
+	0% {
+		color: rgba(0, 0, 0, 0);
+	}
+	49% {
+		color: rgba(0, 0, 0, 0);
+	}
+	50% {
+		color: var(--card-icon-color);
+	}
+	100% {
+		color: var(--card-icon-color);
+	}
+}
+
+@keyframes flip-vertical-left {
+	0% {
+		background-color: var(--card-back-color);
+		transform: rotateY(-180deg);
+	}
+
+	49% {
+		background-color: var(--card-back-color);
+	}
+	50% {
+		background-color: var(--card-face-color);
+	}
+	100% {
+		background-color: var(--card-face-color);
+		transform: rotateY(0);
+	}
 }

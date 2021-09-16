@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
+import gameSlice from './slices/gameSlice'
 import gridSlice from './slices/gridSlice'
+import timerSlice from './slices/timerSlice'
 
 export const store = configureStore({
 	reducer: {
-		grid: gridSlice,
+		grid: gridSlice.reducer,
+		timer: timerSlice.reducer,
+		game: gameSlice.reducer,
 	},
 })
 

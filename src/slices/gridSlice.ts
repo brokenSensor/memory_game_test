@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { icons } from '../icons'
 import { CartType, GridState } from '../types'
 
@@ -14,8 +14,8 @@ export const gridSlice = createSlice({
 			let row = 6,
 				col = 6,
 				grid = [],
-				icons1 = [...icons].sort((a, b) => 0.5 - Math.random()),
-				icons2 = [...icons].sort((a, b) => 0.5 - Math.random())
+				icons1 = [...icons].sort(() => 0.5 - Math.random()),
+				icons2 = [...icons].sort(() => 0.5 - Math.random())
 
 			for (let r = row; r > 0; r--) {
 				const rowArray = []
@@ -23,10 +23,12 @@ export const gridSlice = createSlice({
 					const card1: CartType = {
 						icon: icons1.pop() || '',
 						position: { row: (r - row) * -1, col: (c * 2 - col) * -1 },
+						visibility: false,
 					}
 					const card2: CartType = {
 						icon: icons2.pop() || '',
 						position: { row: (r - row) * -1, col: (c * 2 - col) * -1 + 1 },
+						visibility: false,
 					}
 					rowArray.push(card1, card2)
 				}
@@ -34,9 +36,16 @@ export const gridSlice = createSlice({
 			}
 			state.grid = grid
 		},
+		toggleVisibility: (
+			state,
+			action: PayloadAction<{ row: number; col: number }>
+		) => {
+			state.grid[action.payload.row][action.payload.col].visibility =
+				!state.grid[action.payload.row][action.payload.col].visibility
+		},
 	},
 })
 
-export const { populateGrid } = gridSlice.actions
+export const { populateGrid, toggleVisibility } = gridSlice.actions
 
 export default gridSlice.reducer

@@ -9,9 +9,10 @@ export type GridState = {
 export type CartType = {
 	icon: string
 	position: { row: number; col: number }
+	visibility: boolean
 }
 
 export type CardProps = {
-	visible: boolean
+	visibility: boolean
 	card: CartType
 }

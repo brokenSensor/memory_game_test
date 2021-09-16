@@ -21,7 +21,7 @@ const Game = ({ started }: GameProps) => {
 				<div key={rowIndex} className='row'>
 					{row.map((card, cardIndex) => (
 						<div key={cardIndex} className='col'>
-							<Card visible={true} card={card} />
+							<Card visibility={card.visibility} card={card} />
 						</div>
 					))}
 				</div>

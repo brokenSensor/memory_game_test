@@ -105,8 +105,8 @@
 
 .game-box {
 	display: flex;
-	height: 70vh;
-	width: 70vw;
+	height: 70%;
+	width: 70%;
 	background: rgb(35, 130, 195);
 	background: linear-gradient(
 		180deg,

@@ -153,12 +153,17 @@
 	color: var(--card-icon-color);
 }
 
+.card-done {
+	background-color: var(--card-face-color);
+}
+
 .card-done > i {
 	color: rgb(0, 88, 34) !important;
+	background-color: var(--card-face-color);
 }
 
 .card-hide {
-	animation: hide 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both !important;
+	animation: hide 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) both !important;
 }
 
 @keyframes hide {

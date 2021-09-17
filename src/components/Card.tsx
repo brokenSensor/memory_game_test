@@ -34,7 +34,7 @@ const Card = ({ card }: CardProps) => {
 				onClick={clickHandler}
 				className={`card ${
 					card.visibility ? 'flip-card-face' : 'flip-card-bottom'
-				} ${card.done && 'card-hide'}`}
+				} ${card.done && 'card-hide card-done'}`}
 			>
 				<>
 					<i className={`${card.icon}`}></i>
